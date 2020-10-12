@@ -23,7 +23,16 @@ const logger = (param)=>{
   }
 };
 
-const store = createStore(reducer,applyMiddleware(logger));
+const logger2 = (param)=>{
+  const { getState, dispatch } = param;
+  return next => action => {
+    console.log("will dispatch2",action);
+    const returnValue = next(action);
+    return returnValue;
+  }
+};
+
+const store = createStore(reducer,applyMiddleware(logger,logger2));
 
 store.subscribe(()=>{
     console.log("数据更改了：");
