@@ -1,7 +1,7 @@
 import combineReducers from "./src/combineReducers.js";
 import redux from "./src/index.js";
 
-const { createStore,applyMiddleware } = redux;
+const { createStore } = redux;
 
 const counter = (state = 0, action) => {
   switch (action.type) {
